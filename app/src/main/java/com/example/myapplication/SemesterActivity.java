@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
@@ -33,6 +35,10 @@ public class SemesterActivity extends AppCompatActivity {
         adapter.addItem(new Sem_item("5","악성코드"));
         adapter.addItem(new Sem_item("6","대학영어 읽기쓰기"));
         listview.setAdapter(adapter);
+
+
+
+
     }
 
 
