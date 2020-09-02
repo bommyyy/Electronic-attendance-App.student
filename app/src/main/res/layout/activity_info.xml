@@ -24,3 +24,4 @@
     <include layout="@layout/content_info" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+<!--슬기-->

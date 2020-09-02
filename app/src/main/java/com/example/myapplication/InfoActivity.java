@@ -72,3 +72,5 @@ public class InfoActivity extends AppCompatActivity {
 
 }
 
+//슬기
+

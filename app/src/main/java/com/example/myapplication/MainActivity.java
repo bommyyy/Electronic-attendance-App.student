@@ -24,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button b = (Button)findViewById(R.id.button);
+        Button b = (Button)findViewById(R.id.btn_log);
         b.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(
                         getApplicationContext(),
-                        SemesterActivity.class);
+                        OnairActivity.class);
                 startActivity(intent);
             }
         });
