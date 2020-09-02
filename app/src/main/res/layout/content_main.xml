@@ -8,13 +8,64 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btn_log"
+        android:layout_width="220dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="99dp"
+        android:background="#152268"
+        android:text="로그인"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_pw" />
+
+    <ImageView
+        android:id="@+id/logo_swu"
+        android:layout_width="254dp"
+        android:layout_height="231dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="91dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/msg_id"
+        android:layout_width="218dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="111dp"
+        android:background="@drawable/makelinegrey"
+        android:hint=" id"
+        android:inputType="textMultiLine|textNoSuggestions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_swu"></EditText>
+
+    <EditText
+        android:id="@+id/msg_pw"
+        android:layout_width="218dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="111dp"
+        android:background="@drawable/makelinegrey"
+        android:hint=" password"
+        android:inputType="textMultiLine|textNoSuggestions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_swu"></EditText>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--by 지현-->
