@@ -39,6 +39,10 @@
             android:label="My Application"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".CheckActivity"
+            android:label="My Application"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

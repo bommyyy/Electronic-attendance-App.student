@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Sub1Activity"
+    tools:showIn="@layout/activity_sub1">
+
+    <TextView
+        android:id="@+id/txt_pbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="종단형PBL"
+        android:textSize="24sp" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="34dp"
+        android:gravity="center|end">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="172dp">
+
+            <Button
+                android:id="@+id/btn_plan"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="20dp"
+                android:background="#D56F6D6D"
+                android:text="강의 계획서"
+                android:textColor="#ffffff"
+                android:textSize="30sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_info"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="20dp"
+                android:background="#D56F6D6D"
+                android:text="강의 출석 정보"
+                android:textColor="#ffffff"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_attend"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:background="#D56F6D6D"
+                android:text="출석"
+                android:textColor="#ffffff"
+                android:textSize="30sp" />
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>
+<!--정원-->
