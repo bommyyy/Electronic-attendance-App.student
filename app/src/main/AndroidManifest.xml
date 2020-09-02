@@ -18,6 +18,10 @@
             android:label="@string/title_activity_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".Sub1Activity"
+            android:label="Sub1Activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
