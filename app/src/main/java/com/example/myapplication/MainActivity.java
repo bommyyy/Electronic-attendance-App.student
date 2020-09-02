@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -23,17 +24,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button b = (Button)findViewById(R.id.btn_log);
+        Button b = (Button)findViewById(R.id.button);
         b.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(
                         getApplicationContext(),
-                        OnairActivity.class);
+                        SemesterActivity.class);
                 startActivity(intent);
             }
         });
-    }
+            }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,4 +59,3 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-//지현 메인,인텐트
