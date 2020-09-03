@@ -28,16 +28,22 @@ public class SemesterActivity extends AppCompatActivity {
 
         semAdapter adapter = new semAdapter();
 
-        adapter.addItem(new Sem_item("1","데이터베이스"));
-        adapter.addItem(new Sem_item("2","해피크라프츠"));
-        adapter.addItem(new Sem_item("3","JAVA"));
-        adapter.addItem(new Sem_item("4","C언어"));
-        adapter.addItem(new Sem_item("5","악성코드"));
-        adapter.addItem(new Sem_item("6","대학영어 읽기쓰기"));
+        adapter.addItem(new Sem_item("1", "종단형 PBL"));
+        adapter.addItem(new Sem_item("2", "해피크라프츠"));
+        adapter.addItem(new Sem_item("3", "JAVA"));
+        adapter.addItem(new Sem_item("4", "C언어"));
+        adapter.addItem(new Sem_item("5", "악성코드"));
+        adapter.addItem(new Sem_item("6", "대학영어 읽기쓰기"));
         listview.setAdapter(adapter);
 
 
-
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),Sub1Activity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
