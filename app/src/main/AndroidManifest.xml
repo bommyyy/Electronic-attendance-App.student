@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -47,6 +51,21 @@
             android:label="My Application"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".DetilActivity"
+            android:label="My Application"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <!--////////////////////////////////-->
+        <service android:name="com.minew.beaconset.ConnectService"/>
+        <receiver android:name="com.minew.beaconset.BluetoothChangedReceiver">
+            <intent-filter>
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <uses-library
+            android:name = "org.apache.http.legacy"
+            android:required = "false"/>
+
     </application>
 
 </manifest>
