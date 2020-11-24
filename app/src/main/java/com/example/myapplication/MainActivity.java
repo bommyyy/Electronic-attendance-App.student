@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         msg_pw = (EditText) findViewById(R.id.msg_pw);
 
        Button b = (Button) findViewById(R.id.btn_log);
+       tv = (TextView)findViewById(R.id.textView3);
 
 
         b.setOnClickListener(new View.OnClickListener() {
