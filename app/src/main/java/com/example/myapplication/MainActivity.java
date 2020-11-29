@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         msg_pw = (EditText) findViewById(R.id.msg_pw);
        tv=(TextView)findViewById(R.id.textView);
 
+        //tv = (TextView)findViewById(R.id.textView2); //임의적으로 만듦
+
        Button b = (Button) findViewById(R.id.btn_log);
 
 
