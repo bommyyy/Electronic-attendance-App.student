@@ -4,22 +4,18 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.StrictMode;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -30,7 +26,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         btn_log = (Button) findViewById(R.id.btn_log);
         msg_id = (EditText) findViewById(R.id.msg_id);
         msg_pw = (EditText) findViewById(R.id.msg_pw);
+
+        //tv = (TextView)findViewById(R.id.textView2); //임의적으로 만듦
 
        Button b = (Button) findViewById(R.id.btn_log);
        tv = (TextView)findViewById(R.id.textView3);
