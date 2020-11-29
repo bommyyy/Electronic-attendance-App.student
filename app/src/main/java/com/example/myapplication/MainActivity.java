@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.180.1/login.php");
+            httppost = new HttpPost("http://192.168.56.1/login.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("username", msg_id.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("password", msg_pw.getText().toString()));
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                startActivity((new Intent(MainActivity.this, TodayActivity.class)));
+                startActivity((new Intent(MainActivity.this, SemesterActivity.class)));
                 finish();
             } else {
                 Toast.makeText(MainActivity.this, "Login Fail", Toast.LENGTH_SHORT).show();
