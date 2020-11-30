@@ -57,6 +57,10 @@
             android:label="My Application"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".NoAttendActivity"
+            android:label="My Application"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--////////////////////////////////-->
         <service android:name="com.minew.beaconset.ConnectService"/>
         <receiver android:name="com.minew.beaconset.BluetoothChangedReceiver">

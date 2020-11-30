@@ -78,10 +78,18 @@ public class TodayActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(
-                        getApplicationContext(), // 현재 화면의 제어권자
-                        OnairActivity.class); // 다음 넘어갈 클래스 지정
-                startActivity(intent); // 다음 화면으로 넘어간다
+                if (mRecycle == null) {
+                    Intent intent = new Intent(
+                            getApplicationContext(), // 현재 화면의 제어권자
+                            NoAttendActivity.class); // 다음 넘어갈 클래스 지정
+                    startActivity(intent); // 다음 화면으로 넘어간다
+                }
+                else{
+                    Intent intent = new Intent(
+                            getApplicationContext(), // 현재 화면의 제어권자
+                            OnairActivity.class); // 다음 넘어갈 클래스 지정
+                    startActivity(intent);
+                }
             }
         });
         //OnairActivity로 전환
