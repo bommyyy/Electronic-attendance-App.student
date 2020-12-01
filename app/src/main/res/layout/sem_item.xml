@@ -13,7 +13,7 @@
         android:gravity="center|left"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="20dp" />
+        android:textSize="13dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -24,7 +24,7 @@
         android:gravity="center"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="20dp" />
+        android:textSize="13dp" />
 </LinearLayout>
 
     <!--슬기-->

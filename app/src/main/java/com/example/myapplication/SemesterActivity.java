@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -18,6 +21,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static com.minew.beaconset.a.b.v;
 
 public class SemesterActivity extends AppCompatActivity {
 
@@ -38,7 +43,7 @@ public class SemesterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_semester);
         list = (ListView) findViewById(R.id.subtable);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.56.1/connect.php"); //수정 필요
+        getData("http://192.168.219.184/connect.php"); //수정 필요
     }
 
     protected void showList() {
@@ -67,6 +72,13 @@ public class SemesterActivity extends AppCompatActivity {
             );
 
             list.setAdapter(adapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView parent, View v, int position, long id) {
+                    Intent intent = new Intent(getApplicationContext(),Sub1Activity.class);
+                    startActivity(intent);
+                }
+            });
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -86,13 +98,7 @@ public class SemesterActivity extends AppCompatActivity {
 //        listview.setAdapter(adapter);
 
 
-//        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView parent, View v, int position, long id) {
-//                Intent intent = new Intent(getApplicationContext(),Sub1Activity.class);
-//                startActivity(intent);
-//            }
-//        });
+
 //
 //    }
 
