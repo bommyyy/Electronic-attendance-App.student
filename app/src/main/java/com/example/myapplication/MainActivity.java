@@ -1,10 +1,7 @@
 package com.example.myapplication;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Menu;
@@ -83,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).start();
 
+
 //                Intent intent = new Intent(
 //                        getApplicationContext(),
 //                        TodayActivity.class);
@@ -119,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.219.184/login.php");
+            httppost = new HttpPost("http://172.16.11.204/login.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("username", msg_id.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("password", msg_pw.getText().toString()));
