@@ -1,12 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#152268"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="출석 현황" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/img_in"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginRight="65dp"
+        app:srcCompat="@drawable/notinclass" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_sub"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="출석하지 않았습니다."
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="종단형 PBL"
+        android:textColor="#212121"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_sub2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="미수강중입니다"
+        android:textColor="#212121"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 </LinearLayout>

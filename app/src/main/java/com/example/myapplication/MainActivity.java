@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog dialog = null;
     TextView tv; //welcome 부분
 
+    public static Context context_main; //지현 추가
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,14 +69,19 @@ public class MainActivity extends AppCompatActivity {
         msg_pw = (EditText) findViewById(R.id.msg_pw);
        tv=(TextView)findViewById(R.id.textView);
 
+
         //tv = (TextView)findViewById(R.id.textView2); //임의적으로 만듦
 
        Button b = (Button) findViewById(R.id.btn_log);
 
 
+
+
+        context_main = this; //지현 추가
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 dialog = ProgressDialog.show(MainActivity.this, "",
                         "Validating user...", true);
                 new Thread(new Runnable() {
@@ -117,8 +127,9 @@ public class MainActivity extends AppCompatActivity {
         try {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://172.16.11.204/login.php");
+            httppost = new HttpPost("http://192.168.219.184/login.php");
             nameValuePairs = new ArrayList<NameValuePair>(2);
+            String id = msg_id.getText().toString();
             nameValuePairs.add(new BasicNameValuePair("username", msg_id.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("password", msg_pw.getText().toString()));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -141,9 +152,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                startActivity((new Intent(MainActivity.this, TodayActivity.class)));
-                finish();
+                Intent myIntent = new Intent(this, TodayActivity.class);
+                myIntent.putExtra("id",id);
+                startActivity(myIntent);
+                //startActivity((new Intent(MainActivity.this, TodayActivity.class)));
+                //finish();
             } else {
                 Toast.makeText(MainActivity.this, "Login Fail", Toast.LENGTH_SHORT).show();
             }

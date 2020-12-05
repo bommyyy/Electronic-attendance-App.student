@@ -70,6 +70,10 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             });
         }
     }
+    public int ItemCount(){
+        int a = mMinewBeacons.size();
+        return a;
+    }
 
     @Override
     public int getItemCount() {
@@ -167,7 +171,7 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
                         String UUID = (String) params[0];
                         String Rssi = params[1];
                         String DateNow = (String) params[2];
-                        String link = "http://127.16.11.204/Beacon.php";
+                        String link = "http://192.168.219.184/Beacon.php";
                         String data = URLEncoder.encode("UUID", "UTF-8") + "=" + URLEncoder.encode(UUID, "UTF-8");
                         data += "&" + URLEncoder.encode("Rssi", "UTF-8") + "=" + URLEncoder.encode(Rssi, "UTF-8");
                        data +="&"+ URLEncoder.encode("DateNow","UTF-8")+"="+ URLEncoder.encode(Rssi, "UTF-8");

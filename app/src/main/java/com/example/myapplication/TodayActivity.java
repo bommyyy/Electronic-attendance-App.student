@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,10 +40,10 @@ public class TodayActivity extends AppCompatActivity {
     String[] name={"종단형 PBL 이병걸/ 제2 과학관","종단형 PBL 이병걸/ 제2 과학관"," "," ","전공진로탐색세미나 김명주/ 제1 과학관","전공진로탐색세미나 김명주/ 제1 과학관"};
 
 
-
+    int beacon_num;
 
     //////////////////////////////////////////////-->보미지현
-    private RecyclerView mRecycle;
+    private RecyclerView mRecycle = null;
     private MinewBeaconManager mMinewBeaconManager;
     private BeaconListAdapter  mAdapter;
     UserRssi comp = new UserRssi();
@@ -63,6 +64,12 @@ public class TodayActivity extends AppCompatActivity {
         Button btn1 = (Button)findViewById(R.id.btn_sub);
         Button btn2 = (Button)findViewById(R.id.btn_onair);
 
+        //Intent secondIntent = getIntent();
+        //secondIntent.getStringExtra("id");
+        //TextView textView4 = findViewById(R.id.textView4);
+        //String id_value = secondIntent.getStringExtra("id");
+        //textView4.setText(id_value);
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,16 +83,27 @@ public class TodayActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mRecycle == null) {
+                beacon_num= MinewBeaconManager.scannedBeacons.size();
+                if (beacon_num == 0) {
                     Intent intent = new Intent(
                             getApplicationContext(), // 현재 화면의 제어권자
                             NoAttendActivity.class); // 다음 넘어갈 클래스 지정
-                    startActivity(intent); // 다음 화면으로 넘어간다
+                    Intent secondIntent = getIntent();
+                    TextView textView4 = findViewById(R.id.textView4);
+                    String id_value = secondIntent.getStringExtra("id");
+                    intent.putExtra("id",id_value);
+                    intent.putExtra("beacon","2");
+                    startActivity(intent);// 다음 화면으로 넘어간다
                 }
                 else{
                     Intent intent = new Intent(
                             getApplicationContext(), // 현재 화면의 제어권자
                             OnairActivity.class); // 다음 넘어갈 클래스 지정
+                    Intent secondIntent = getIntent();
+                    TextView textView4 = findViewById(R.id.textView4);
+                    String id_value = secondIntent.getStringExtra("id");
+                    intent.putExtra("id",id_value);
+                    intent.putExtra("beacon","1");
                     startActivity(intent);
                 }
             }
@@ -136,13 +154,17 @@ public class TodayActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecycle.setLayoutManager(layoutManager);
         mAdapter = new BeaconListAdapter();
+
         mRecycle.setAdapter(mAdapter);
         mRecycle.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager
                 .HORIZONTAL));
+
+       // beacon_num = mAdapter.ItemCount();
     }
 
     private void initManager() {
         mMinewBeaconManager = MinewBeaconManager.getInstance(this);
+
     }
 
     /*
@@ -236,6 +258,7 @@ public class TodayActivity extends AppCompatActivity {
             switch (state) {
                 case BeaconStatus_Connected:
                     mpDialog.dismiss();
+
                     Intent intent = new Intent(TodayActivity.this, DetilActivity.class);
                     intent.putExtra("mac", connection.setting.getMacAddress());
                     startActivity(intent);
