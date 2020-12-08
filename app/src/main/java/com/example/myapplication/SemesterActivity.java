@@ -41,7 +41,7 @@ public class SemesterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_semester);
         list = (ListView) findViewById(R.id.subtable);
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.219.184/semester.php"); //수정 필요
+        getData("http://192.168.219.184/semester.php"); //ip주소변경
     }
 
     protected void showList() {

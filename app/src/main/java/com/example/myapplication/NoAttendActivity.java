@@ -30,7 +30,7 @@ public class NoAttendActivity extends AppCompatActivity {
     ProgressBar progressBar;
     int counter = 0;
     //String var2 = ((MainActivity)MainActivity.context_main).var; //지현 추가
-    public static final String URL_UPDT = "http://192.168.219.184/onair.php";
+    //public static final String URL_UPDT = "http://192.168.219.184/onair.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class NoAttendActivity extends AppCompatActivity {
             //requestedParams.put("id",var2);
             //Log.d("HashMap",requestedParams.get("id"));
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.219.184/onair.php");
+            httppost = new HttpPost("http://192.168.219.184/onair.php"); //ip주소변경
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("id", id_value));
             nameValuePairs.add(new BasicNameValuePair("beacon",beacon));

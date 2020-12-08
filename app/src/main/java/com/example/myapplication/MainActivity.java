@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.219.184/login.php");
+            httppost = new HttpPost("http://192.168.219.184/login.php"); //ip주소변경
             nameValuePairs = new ArrayList<NameValuePair>(2);
             String id = msg_id.getText().toString();
             nameValuePairs.add(new BasicNameValuePair("username", msg_id.getText().toString()));
