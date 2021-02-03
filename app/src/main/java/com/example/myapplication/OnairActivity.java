@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.minew.beaconset.MinewBeacon;
+import com.minew.beaconset.MinewBeaconConnection;
+import com.minew.beaconset.MinewBeaconManager;
+import com.minew.beaconset.MinewBeaconManagerListener;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -23,7 +28,9 @@ import org.apache.http.message.BasicNameValuePair;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
@@ -36,6 +43,7 @@ public class OnairActivity extends AppCompatActivity {
     List<NameValuePair> nameValuePairs;
     HttpResponse response;
 
+
     ProgressBar progressBar;
     int counter = 0;
     //String var2 = ((MainActivity)MainActivity.context_main).var; //지현 추가
@@ -46,7 +54,7 @@ public class OnairActivity extends AppCompatActivity {
         setContentView(R.layout.activity_onair);
 
 
-
+        //mMinewBeaconManager.startScan();
         prog();
         new Thread(new Runnable() {
             @Override
@@ -85,16 +93,42 @@ public class OnairActivity extends AppCompatActivity {
             Intent secondIntent = getIntent();
             String id_value = secondIntent.getStringExtra("id");
             String beacon= secondIntent.getStringExtra("beacon");
+            String major= secondIntent.getStringExtra("major");
 
             //HashMap<String,String> requestedParams = new HashMap<>();
             //requestedParams.put("id",var2);
             //Log.d("HashMap",requestedParams.get("id"));
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.219.184/onair.php"); //ip주소변경
-            nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("id", id_value));
-            nameValuePairs.add(new BasicNameValuePair("beacon",beacon));
+//            httppost = new HttpPost("http://192.168.219.161/onair.php"); //ip주소변경
+//            nameValuePairs = new ArrayList<NameValuePair>(2);
+//            nameValuePairs.add(new BasicNameValuePair("id", id_value));
+//            nameValuePairs.add(new BasicNameValuePair("beacon",beacon));
+//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            ///////기존
+
+            //String major = mAdapter.getMajor
+            long now = System.currentTimeMillis();
+            Date date = new Date(now);
+            SimpleDateFormat monthdate = new SimpleDateFormat("MMdd");
+            String formatDate = monthdate.format(date);
+            SimpleDateFormat time = new SimpleDateFormat("HHmm");
+            String formatDate2 = time.format(date);
+            SimpleDateFormat day = new SimpleDateFormat("EE");
+            String weekday = day.format(date);
+//            String major = ((BeaconListAdapter)BeaconListAdapter.context).major;
+            //String major = ((TodayActivity)TodayActivity.context_main).major;
+
+
+
+            httppost = new HttpPost("http://192.168.219.161/test.php"); //php 내용 없음
+            nameValuePairs = new ArrayList<NameValuePair>(5);
+            nameValuePairs.add(new BasicNameValuePair("id",id_value));
+            nameValuePairs.add(new BasicNameValuePair("monthdate",formatDate)); //1015
+            nameValuePairs.add(new BasicNameValuePair("time",formatDate2)); //1530
+            nameValuePairs.add(new BasicNameValuePair("weekday",weekday));
+            nameValuePairs.add(new BasicNameValuePair("major",major));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
             response = httpclient.execute(httppost);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             final String response = httpclient.execute(httppost, responseHandler);
@@ -102,7 +136,6 @@ public class OnairActivity extends AppCompatActivity {
             System.out.println("Exception : " + e.getMessage());
         }
     }
-
 }
 
 //지현 progressbar진행 코드

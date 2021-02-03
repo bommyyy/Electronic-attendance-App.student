@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.minew.beaconset.MinewBeacon;
+import com.minew.beaconset.MinewBeaconManager;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,22 +30,28 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
 
     private List<MinewBeacon> mMinewBeacons;
 
+    public static Context context_main;
+    public String major;
+
     public interface OnItemClickLitener {
         void onItemClick(View view, int position);
 
         void onItemLongClick(View view, int position);
+
     }
 
     private OnItemClickLitener mOnItemClickLitener;
 
     public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener) {
         this.mOnItemClickLitener = mOnItemClickLitener;
+
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(parent.getContext(), R.layout.main_item, null);
         return new MyViewHolder(view);
+
     }
 
     @Override
@@ -121,11 +129,10 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             mConnectable = (TextView) itemView.findViewById(R.id.device_connectable);
             dateNow = (TextView) itemView.findViewById(R.id.datenow);
 
-
-
         }
 
         public void setDataAndUi(MinewBeacon minewBeacon) {
+
             mMinewBeacon = minewBeacon;
             mDevice_name.setText(mMinewBeacon.getName());
             mDevice_uuid.setText("UUID:" + mMinewBeacon.getUuid()); dateNow.setText("DateNow"+formatDate);
@@ -134,17 +141,20 @@ public class BeaconListAdapter extends RecyclerView.Adapter<BeaconListAdapter.My
             } else {
                 mConnectable.setText("CONN: NO");
             }
-            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s",
-                    mMinewBeacon.getMajor(),
-                    mMinewBeacon.getMinor(),
-                    mMinewBeacon.getRssi(),
-                    mMinewBeacon.getBattery());
+//            String format = String.format("Major:%s Minor:%s Rssi:%s Battery:%s",
+//                    mMinewBeacon.getMajor(),
+//                    mMinewBeacon.getMinor(),
+//                    mMinewBeacon.getRssi(),
+//                    mMinewBeacon.getBattery());
+            String format = mMinewBeacon.getMajor();
             mDevice_other.setText(format);
-//    dateNow.setText(formatDate);
+
             insertoToDatabase(mMinewBeacon.getMajor().toString(),mMinewBeacon.getRssi(),formatDate.toString());
     }
-
-
+        public void getmajor(MinewBeacon minewBeacon){
+            mMinewBeacon = minewBeacon;
+            major=mMinewBeacon.getMajor();
+        }
 
 
 

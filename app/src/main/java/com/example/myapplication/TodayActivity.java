@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -39,7 +40,7 @@ public class TodayActivity extends AppCompatActivity {
     String[] number = {"1","2","3","4","5","6"};
     String[] name={"종단형 PBL 이병걸/ 제2 과학관","종단형 PBL 이병걸/ 제2 과학관"," "," ","전공진로탐색세미나 김명주/ 제1 과학관","전공진로탐색세미나 김명주/ 제1 과학관"};
 
-
+    public static Context context_main;
     int beacon_num;
 
     //////////////////////////////////////////////-->보미지현
@@ -63,6 +64,11 @@ public class TodayActivity extends AppCompatActivity {
 
         Button btn1 = (Button)findViewById(R.id.btn_sub);
         Button btn2 = (Button)findViewById(R.id.btn_onair);
+
+
+//        major = mAdapter.getData(1).getMajor();
+        //major = "50";
+        context_main = this;
 
         //Intent secondIntent = getIntent();
         //secondIntent.getStringExtra("id");
@@ -93,6 +99,7 @@ public class TodayActivity extends AppCompatActivity {
                     String id_value = secondIntent.getStringExtra("id");
                     intent.putExtra("id",id_value);
                     intent.putExtra("beacon","2");
+
                     startActivity(intent);// 다음 화면으로 넘어간다
                 }
                 else{
@@ -104,6 +111,8 @@ public class TodayActivity extends AppCompatActivity {
                     String id_value = secondIntent.getStringExtra("id");
                     intent.putExtra("id",id_value);
                     intent.putExtra("beacon","1");
+                    String major = mAdapter.getData(0).getMajor();
+                    intent.putExtra("major",major);
                     startActivity(intent);
                 }
             }
@@ -156,6 +165,7 @@ public class TodayActivity extends AppCompatActivity {
         mAdapter = new BeaconListAdapter();
 
         mRecycle.setAdapter(mAdapter);
+
         mRecycle.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager
                 .HORIZONTAL));
 
@@ -227,7 +237,6 @@ public class TodayActivity extends AppCompatActivity {
 
             }
         });
-
         mAdapter.setOnItemClickLitener(new BeaconListAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -237,6 +246,7 @@ public class TodayActivity extends AppCompatActivity {
                 mMinewBeaconManager.stopScan();
                 //connect to beacon
                 MinewBeacon minewBeacon = mAdapter.getData(position);
+
                 MinewBeaconConnection minewBeaconConnection = new MinewBeaconConnection(TodayActivity.this, minewBeacon);
                 minewBeaconConnection.setMinewBeaconConnectionListener(minewBeaconConnectionListener);
                 minewBeaconConnection.connect();
