@@ -120,7 +120,7 @@ public class OnairActivity extends AppCompatActivity {
 
 
 
-            httppost = new HttpPost("http://192.168.219.161/test.php"); //php 내용 없음
+            httppost = new HttpPost("http://192.168.219.161/test.php"); //ip 주소 변경 필요
             nameValuePairs = new ArrayList<NameValuePair>(5);
             nameValuePairs.add(new BasicNameValuePair("id",id_value));
             nameValuePairs.add(new BasicNameValuePair("monthdate",formatDate)); //1015
