@@ -99,11 +99,11 @@ public class OnairActivity extends AppCompatActivity {
             //requestedParams.put("id",var2);
             //Log.d("HashMap",requestedParams.get("id"));
             httpclient = new DefaultHttpClient();
-//            httppost = new HttpPost("http://192.168.219.161/onair.php"); //ip주소변경
-//            nameValuePairs = new ArrayList<NameValuePair>(2);
-//            nameValuePairs.add(new BasicNameValuePair("id", id_value));
-//            nameValuePairs.add(new BasicNameValuePair("beacon",beacon));
-//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httppost = new HttpPost("http://192.168.219.199/onair.php"); //ip주소변경
+            nameValuePairs = new ArrayList<NameValuePair>(2);
+            nameValuePairs.add(new BasicNameValuePair("id", id_value));
+            nameValuePairs.add(new BasicNameValuePair("beacon",beacon));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             ///////기존
 
             //String major = mAdapter.getMajor
@@ -120,14 +120,15 @@ public class OnairActivity extends AppCompatActivity {
 
 
 
-            httppost = new HttpPost("http://192.168.219.161/test.php"); //ip 주소 변경 필요
-            nameValuePairs = new ArrayList<NameValuePair>(5);
-            nameValuePairs.add(new BasicNameValuePair("id",id_value));
-            nameValuePairs.add(new BasicNameValuePair("monthdate",formatDate)); //1015
-            nameValuePairs.add(new BasicNameValuePair("time",formatDate2)); //1530
-            nameValuePairs.add(new BasicNameValuePair("weekday",weekday));
-            nameValuePairs.add(new BasicNameValuePair("major",major));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//            httppost = new HttpPost("http://172.18.24.17/test.php"); //ip주소변경 필요
+//            nameValuePairs = new ArrayList<NameValuePair>(5);
+//            nameValuePairs.add(new BasicNameValuePair("id",id_value));
+//            nameValuePairs.add(new BasicNameValuePair("monthdate",formatDate)); //1015
+//            nameValuePairs.add(new BasicNameValuePair("time",formatDate2)); //1530
+//            nameValuePairs.add(new BasicNameValuePair("weekday",weekday));
+//            nameValuePairs.add(new BasicNameValuePair("major",major));
+//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            //만약 실제로 사용할시 onair.php 관련 코드를 주석처리하고 이부분을 살린다.
 
             response = httpclient.execute(httppost);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();

@@ -60,7 +60,7 @@ public class NoAttendActivity extends AppCompatActivity {
             //requestedParams.put("id",var2);
             //Log.d("HashMap",requestedParams.get("id"));
             httpclient = new DefaultHttpClient();
-            httppost = new HttpPost("http://192.168.219.161/onair.php"); //ip주소변경
+            httppost = new HttpPost("http://192.168.219.199/onair.php"); //ip주소변경
             nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("id", id_value));
             nameValuePairs.add(new BasicNameValuePair("beacon",beacon));
